@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/DetailView.dart';
 import './Configuration.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -152,45 +153,82 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             //PetCat 2
-            Container(
-              height: 240,
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Stack(children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 40),
-                        decoration: BoxDecoration(
-                          color: Colors.blueGrey,
-                          borderRadius: BorderRadius.circular(20),
+            GestureDetector(
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DetailView()))
+              },
+              child: Container(
+                height: 240,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Stack(children: [
+                        Container(
+                          margin: EdgeInsets.only(top: 40),
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                         ),
-                      ),
-                      Align(
-                        child: Image.asset('images/pet-cat2.png'),
-                      ),
-                    ]),
-                  ),
-                  Expanded(
-                    child: Stack(children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 60, bottom: 20),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                bottomRight: Radius.circular(20)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade300,
-                                blurRadius: 30,
-                                offset: Offset(0, 10),
-                              )
-                            ]),
-                      )
-                    ]),
-                  )
-                ],
+                        Align(
+                          child: Image.asset('images/pet-cat2.png'),
+                        ),
+                      ]),
+                    ),
+                    Expanded(
+                      child: Stack(children: [
+                        Container(
+                          padding : EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text('Sola', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                                  IconButton(
+                                    icon: Icon(Icons.male, color: primaryColor),
+                                    onPressed: () => {},
+                                  ),
+                                ],
+                              ),
+                              Text('Abisian Cat'),
+                              Text('2 years old'),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  IconButton(
+                                      icon: Icon(Icons.location_on,
+                                          color: primaryColor, size: 15,),
+                                      onPressed: () => {}),
+                                  Text('Distance 2.6 km'),
+                                ],
+                              ),
+                            ],
+                          ),
+                          margin: EdgeInsets.only(top: 60, bottom: 20),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  blurRadius: 30,
+                                  offset: Offset(0, 10),
+                                )
+                              ]),
+                        )
+                      ]),
+                    )
+                  ],
+                ),
               ),
             ),
 
@@ -241,7 +279,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       decoration: BoxDecoration(
         color: Colors.white, // added
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(isDrawerOpen ? 40.0 : 0.0),
       ),
     );
   }
